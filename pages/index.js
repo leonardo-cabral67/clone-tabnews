@@ -1,3 +1,3 @@
 export default function HomePage() {
-    return <h1>Eu te amo Victoria, se você me ama dá um sorrizinho</h1>
+    return <h1>Victoria, olhe imediatamente a mochila cinza (olhe o bolso menor)</h1>
 }
