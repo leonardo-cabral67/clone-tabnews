@@ -4,7 +4,9 @@
   "description": "it is a clone of tabnews",
   "main": "index.js",
   "scripts": {
-    "dev": "next dev"
+    "dev": "next dev",
+    "lint:check": "prettier --check .",
+    "lint:fix": "prettier --write ."
   },
   "author": "leonardo cabral",
   "license": "MIT",
