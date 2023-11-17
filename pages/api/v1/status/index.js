@@ -1,4 +1,4 @@
-import database from '../../../../infra/database';
+import database from 'infra/database';
 
 export default async function status(request, response) {
   const {query} = database;
