@@ -14,7 +14,8 @@ async function query(queryObject) {
     const response = await client.query(queryObject);
     return response
   } catch (error) {
-    return response
+    console.log(error)
+    throw error
   } finally {
     await client.end();
   }
