@@ -7,6 +7,5 @@ test("GET on api/v1/status should return status 200", async () => {
   expect(response.status).toBe(200)
   expect(database.version).toBe("16.0")
   expect(typeof Number(database.max_connections)).toBe('number')
-  console.log('openned_connections: ', database.openned_connections)
-  expect(Number(database.openned_connections) === 1).toBe(true)
+  expect(Number(database.opened_connections) === 1).toBe(true)
 })
