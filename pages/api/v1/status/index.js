@@ -20,7 +20,7 @@ export default async function status(request, response) {
       database: {
         version: dbVersionValue,
         max_connections: maxConnectionsValue,
-        used_connections: connections_value
+        opened_connections: connections_value
       }
     },
   })
