@@ -4,7 +4,7 @@
   "description": "it is a clone of tabnews",
   "main": "index.js",
   "scripts": {
-    "dev": "npm run services:start && next dev",
+    "dev": "npm run services:up && npm run wait-for-postgres && npm run migration:up && next dev",
     "lint:check": "prettier --check .",
     "lint:fix": "prettier --write .",
     "test": "jest",
@@ -14,12 +14,14 @@
     "services:stop": "docker compose -f infra/compose.yaml stop",
     "services:down": "docker compose -f infra/compose.yaml down",
     "migration:create": "node-pg-migrate -m infra/migrations create",
-    "migration:up": "node-pg-migrate --envPath .env.development -m infra/migration up"
+    "migration:up": "node-pg-migrate --envPath .env.development -m ./infra/migrations up",
+    "wait-for-postgres": "node infra/scripts/wait-for-postgres.js"
   },
   "author": "leonardo cabral",
   "license": "MIT",
   "dependencies": {
     "dotenv": "^16.4.5",
+    "dotenv-expand": "^12.0.2",
     "next": "13.1.6",
     "node-pg-migrate": "^6.2.2",
     "pg": "8.11.3",
