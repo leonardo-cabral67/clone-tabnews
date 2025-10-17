@@ -1,15 +1,14 @@
-import database from 'infra/database';
-import orchestrator from 'tests/orchestrator.js';
-
+import database from "infra/database";
+import orchestrator from "tests/orchestrator.js";
 
 beforeAll(async () => {
-  await orchestrator.waitForAllServices()
-  await database.query('drop schema public cascade; create schema public;')
-})
+  await orchestrator.waitForAllServices();
+  await database.query("drop schema public cascade; create schema public;");
+});
 
 test("POST to api/v1/migrations should return status 200", async () => {
   const response1 = await fetch("http:localhost:3000/api/v1/migrations", {
-    method: 'post'
+    method: "post",
   });
   expect(response1.status).toBe(201);
 
@@ -20,7 +19,7 @@ test("POST to api/v1/migrations should return status 200", async () => {
   expect(migrations1.rows.length).toBeGreaterThan(0);
 
   const response2 = await fetch("http:localhost:3000/api/v1/migrations", {
-    method: 'post'
+    method: "post",
   });
   expect(response2.status).toBe(200);
 
@@ -29,4 +28,4 @@ test("POST to api/v1/migrations should return status 200", async () => {
   expect(response2Body.length).toBe(0);
   // const migrations2 = await database.query('select * from "pg-migrations"');
   // expect(migrations2.rows.length).toBe(0);
-})
+});
